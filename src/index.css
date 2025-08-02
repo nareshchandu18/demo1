@@ -1,0 +1,242 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* AI-First Learning Platform Design System */
+
+@layer base {
+  :root {
+    /* Background System */
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --surface: 240 6% 10%;
+    --surface-elevated: 240 5% 14%;
+
+    /* Card System */
+    --card: 240 6% 10%;
+    --card-foreground: 0 0% 98%;
+    --card-border: 240 6% 16%;
+
+    /* Primary Brand (Purple/Blue Gradient) */
+    --primary: 250 84% 60%;
+    --primary-foreground: 0 0% 100%;
+    --primary-muted: 250 84% 80%;
+    --primary-dark: 250 84% 45%;
+
+    /* Success/Growth (Green) */
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 100%;
+    --success-muted: 142 76% 70%;
+
+    /* XP/Achievement (Gold) */
+    --achievement: 48 96% 53%;
+    --achievement-foreground: 0 0% 10%;
+    --achievement-muted: 48 96% 80%;
+
+    /* Streak (Orange/Red) */
+    --streak: 14 91% 60%;
+    --streak-foreground: 0 0% 100%;
+    --streak-muted: 14 91% 80%;
+
+    /* Secondary Elements */
+    --secondary: 240 5% 14%;
+    --secondary-foreground: 0 0% 90%;
+    --muted: 240 5% 14%;
+    --muted-foreground: 240 3% 60%;
+
+    /* Interactive Elements */
+    --accent: 250 84% 60%;
+    --accent-foreground: 0 0% 100%;
+    --border: 240 6% 16%;
+    --input: 240 6% 16%;
+    --ring: 250 84% 60%;
+
+    /* Status Colors */
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 10%;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(250 84% 60%), hsl(270 84% 70%));
+    --gradient-success: linear-gradient(135deg, hsl(142 76% 36%), hsl(160 76% 50%));
+    --gradient-achievement: linear-gradient(135deg, hsl(48 96% 53%), hsl(35 96% 60%));
+    --gradient-surface: linear-gradient(135deg, hsl(240 6% 10%), hsl(240 5% 14%));
+
+    /* Shadows & Glows */
+    --shadow-primary: 0 10px 30px -5px hsl(250 84% 60% / 0.3);
+    --shadow-success: 0 10px 30px -5px hsl(142 76% 36% / 0.3);
+    --shadow-achievement: 0 10px 30px -5px hsl(48 96% 53% / 0.3);
+    --glow-primary: 0 0 20px hsl(250 84% 60% / 0.5);
+
+    /* Animation Timing */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-medium;
+  }
+}
+
+@layer components {
+  /* Gamification Components */
+  .xp-card {
+    @apply bg-gradient-to-br from-achievement/20 to-achievement/5 border border-achievement/30 
+           backdrop-blur-sm rounded-xl p-4 transition-smooth hover:scale-105;
+    box-shadow: var(--shadow-achievement);
+  }
+
+  .xp-card:hover {
+    box-shadow: var(--shadow-achievement);
+  }
+
+  .streak-card {
+    @apply bg-gradient-to-br from-streak/20 to-streak/5 border border-streak/30 
+           backdrop-blur-sm rounded-xl p-4 transition-smooth hover:scale-105;
+    box-shadow: var(--shadow-primary);
+  }
+
+  .progress-card {
+    @apply bg-gradient-to-br from-success/20 to-success/5 border border-success/30 
+           backdrop-blur-sm rounded-xl p-4 transition-smooth hover:scale-105;
+    box-shadow: var(--shadow-success);
+  }
+
+  .glass-card {
+    @apply bg-card/50 border border-card-border backdrop-blur-sm rounded-xl p-6 
+           transition-smooth hover:bg-card/70;
+  }
+
+  /* Interactive Elements */
+  .nav-link {
+    @apply relative flex items-center gap-3 px-4 py-3 rounded-lg text-muted-foreground 
+           transition-smooth hover:text-foreground hover:bg-surface-elevated;
+  }
+
+  .nav-link.active {
+    @apply text-primary bg-primary/10 border border-primary/20;
+  }
+
+  .nav-link::before {
+    @apply content-[''] absolute left-0 w-1 h-0 bg-primary rounded-r transition-smooth;
+  }
+
+  .nav-link:hover::before {
+    @apply h-full;
+  }
+
+  .nav-link.active::before {
+    @apply h-full;
+  }
+  /* Animations */
+  .animate-bounce-gentle {
+    animation: bounce-gentle 2s infinite;
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 2s infinite;
+  }
+
+  .animate-slide-up {
+    animation: slide-up 0.5s ease-out;
+  }
+}
+
+@layer utilities {
+  /* Custom Backgrounds */
+  .bg-gradient-primary { background: var(--gradient-primary); }
+  .bg-gradient-success { background: var(--gradient-success); }
+  .bg-gradient-achievement { background: var(--gradient-achievement); }
+  .bg-gradient-surface { background: var(--gradient-surface); }
+
+  /* Custom Colors */
+  .text-achievement { color: hsl(var(--achievement)); }
+  .text-streak { color: hsl(var(--streak)); }
+  .text-success { color: hsl(var(--success)); }
+  .bg-surface { background-color: hsl(var(--surface)); }
+  .bg-surface-elevated { background-color: hsl(var(--surface-elevated)); }
+  .border-card-border { border-color: hsl(var(--card-border)); }
+
+  /* Transitions */
+  .transition-smooth { transition: var(--transition-smooth); }
+  .transition-bounce { transition: var(--transition-bounce); }
+}
+
+/* Keyframes */
+@keyframes bounce-gentle {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: var(--glow-primary); }
+  50% { box-shadow: none; }
+}
+
+@keyframes slide-up {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
